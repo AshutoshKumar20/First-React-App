@@ -1,7 +1,11 @@
 import { useState } from 'react';
 import './App.css';
-import ClassComponent from './components/ClassComponent';
-import FunctionalComponent from './components/FunctionalComponent';
+import ClassComponent from './pages/ClassComponent';
+import FunctionalComponent from './pages/FunctionalComponent';
+import { Routes, Route } from "react-router-dom";
+//HOC Layout
+import BaseHoc from "./hoc/BaseHoc";
+
 
 function App() {
   const company = "MicroSoft";
@@ -9,7 +13,26 @@ function App() {
   const [name, setName] = useState("Ashutosh")
 
   return (
-    <div className="App">
+    <Routes>]
+      <Route path="/" element={<ClassComponent />} />
+      <Route
+        path="functional-component"
+        element={
+          <FunctionalComponent
+            name={name}
+            age={19}
+            company={company}
+            setName={setName}
+          />
+        }
+      />
+    </Routes>
+  );
+}
+
+export default App;
+
+/*<div className="App">
       <h1>Class Component</h1>
       <ClassComponent />
       <br />
@@ -19,8 +42,4 @@ function App() {
         age={19}
         company={company}
         setName={setName} />
-    </div>
-  );
-}
-
-export default App;
+    </div> */
