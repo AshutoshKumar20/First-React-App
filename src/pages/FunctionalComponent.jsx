@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BaseHoc from "../hoc/BaseHoc";
 
-const FunctionalComponent = ({ name, age, company, setName }) => {
+const FunctionalComponent = (props) => {
     const [count, setCount] = useState(0);
     const [changeName, setChangeName] = useState("")
 
@@ -9,7 +9,24 @@ const FunctionalComponent = ({ name, age, company, setName }) => {
         setCount(count - 1);
     };
 
-    // const { name, age, company, setName } = props;
+    const { name, age, company, setName } = props;
+
+    useEffect(() => {
+        console.log("Component Did Mount");
+    }, []);
+
+    useEffect(() => {
+        console.log("Component Did Update");
+    });
+
+    useEffect(() => {
+        console.log("Only on Changing name");
+    }, [changeName]);
+
+    useEffect(() => {
+        console.log("Only on props change");
+    }, [props]);
+
 
     return (
         <div>
